@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,17 +26,14 @@ namespace Proiect_Licenta
             txtBox_MM.TextChanged += EventHandler;
             txtBox_YYYY.TextChanged += EventHandler;
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
-
+           
         }
-
         private void btnClose_Payment_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         public void EventHandler(object sender, EventArgs e)
         {
             lblName_Payment.Text = $"{txtBoxCardHolder.Text}";
@@ -45,7 +44,7 @@ namespace Proiect_Licenta
 
         private void Payment_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         private void btn_PAY_Click(object sender, EventArgs e)
@@ -54,32 +53,31 @@ namespace Proiect_Licenta
             if (VerifyIsNullTxtBox(txtBoxCardNumber.Text) &&
                VerifyIsNullTxtBox(txtBox_CVV.Text) &&
                VerifyIsNullTxtBox(txtBoxCardHolder.Text) &&
-               VerifyCVVLength(payment.CVV) &&
+               VerifyNumberOfCharacter(payment.CVV, 3) &&
                VerifyIsLetterOrNot(txtBoxCardHolder.Text) &&
-               VerifyNumberCardLength(payment.CardNumber))
+               VerifyNumberOfCharacter(payment.CardNumber, 16))
+
+
             {
                 Form LoadingVerifyPayment = new LoadingVerifyPayment();
                 LoadingVerifyPayment.Show();
             }
 
-          
+
         }
 
         public PaymentClass payment { get; set; }
 
         public void VerifyTxtBoxCVV()
         {
-            int cvv;
+            payment.CVV = txtBox_CVV.Text;
 
-            if (int.TryParse(txtBox_CVV.Text, out cvv))
-            {
-                payment.CVV = cvv;
-            }
-            else if (VerifyIsNullTxtBox(txtBox_CVV.Text))
+
+            if (VerifyIsNullTxtBox(payment.CVV))
             {
                 txtBox_CVV.Text = "EMPTY FIELD";
             }
-            else if (!VerifyCVVLength(payment.CVV))
+            else if (VerifyNumberOfCharacter(payment.CVV, 3))
             {
                 lblVerifyCVV.Text = "CVV NEED TO \n JUST 3 DIGITS";
             }
@@ -102,17 +100,13 @@ namespace Proiect_Licenta
 
         public void VerifyTxtBoxCardNumber()
         {
-            int cardNumber;
+            payment.CardNumber = txtBoxCardNumber.Text;
 
-            if (int.TryParse(txtBoxCardNumber.Text, out cardNumber))
-            {
-                payment.CardNumber = cardNumber;
-            }
-            else if (VerifyIsNullTxtBox(txtBoxCardNumber.Text))
+            if (VerifyIsNullTxtBox(payment.CardNumber))
             {
                 txtBoxCardNumber.Text = "EMPTY FIELD";
             }
-            else if (!VerifyNumberCardLength(payment.CardNumber))
+            else if (VerifyNumberOfCharacter(payment.CardNumber, 16))
             {
                 labelCardHolderVerify.Text = "NUMBER CARD NEED TO HAVE 16 DIGITS ";
             }
@@ -151,34 +145,77 @@ namespace Proiect_Licenta
 
         }
 
-        public bool VerifyNumberCardLength(int a)
+        public bool VerifyNumberOfCharacter(string a, int b)
         {
-            int lenght = a.ToString().Length;
-
-            if (lenght == 16)
+            int counter = 0;
+            for (int i = 0; i <= a.Length; i++)
             {
-                return true;
+                char letter = a[i];
+
+                counter++;
             }
-            else
+
+            if (counter > b || counter < b)
             {
                 return false;
             }
+
+            return true;
+
         }
-
-        public bool VerifyCVVLength(int a)
+          
+        public void Encrypt(List<int> listOfPrimeNumber, Random random)
         {
-            int lenght = a.ToString().Length;
+            int firstNum  = payment.Extract1NumberOfCard(payment.CardNumber);
+            int secondNum = payment.Extract2NumberOfCard(payment.CardNumber);
+            int thirdNum  = payment.Extract3NumberOfCard(payment.CardNumber);
+            int fourthNum = payment.Extract4NumberOfCard(payment.CardNumber);
+            int fifthNum = payment.Extract5NumberOfCard(payment.CardNumber);
+            int sixthNum  = payment.Extract6NumberOfCard(payment.CardNumber);
+            int seventhNum= payment.Extract7NumberOfCard(payment.CardNumber);
+            int eighthNum = payment.Extract8NumberOfCard(payment.CardNumber);
+            int ninthNum = payment.Extract9NumberOfCard(payment.CardNumber);
+            int tenthNum = payment.Extract10NumberOfCard(payment.CardNumber);
+            int eleventhNum = payment.Extract11NumberOfCard(payment.CardNumber);
+            int tweltfNum  = payment.Extract12NumberOfCard(payment.CardNumber);
+            int thirteenthNum =  payment.Extract13NumberOfCard(payment.CardNumber);
+            int fourteenthNum = payment.Extract14NumberOfCard(payment.CardNumber);
+            int fifteenthNum = payment.Extract15NumberOfCard(payment.CardNumber);
+            int sixteenthNum = payment.Extract16NumberOfCard(payment.CardNumber);
 
-            if (lenght == 3)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            payment.AddNumberInList(listOfPrimeNumber);
+            payment.LargePrimeNumber(listOfPrimeNumber);
+           int p =  payment.RandomNumbersP(listOfPrimeNumber, random);
+           int q =  payment.RandomNumbersQ(listOfPrimeNumber, random);
+           int n =  payment.MultiplicationLargeNumber(p,q);
+           int r = payment.FindR(p,q);
+           int e = payment.E();
+           int ciphertext1 = payment.Encrypt(firstNum,e,n);
+           int ciphertext2 = payment.Encrypt(secondNum,e,n);
+           int ciphertext3 = payment.Encrypt(thirdNum,e,n);
+           int chipertext4 = payment.Encrypt(fourthNum,e,n);
+           int chipertext5 = payment.Encrypt(fifthNum,e,n);
+           int chipertext6 = payment.Encrypt(sixthNum,e,n);
+           int chipertext7 = payment.Encrypt(seventhNum,e,n);
+           int chipertext8 = payment.Encrypt(eighthNum,e,n);
+           int chipertext9 = payment.Encrypt(ninthNum,e,n);
+           int chipertext10 = payment.Encrypt(tenthNum,e,n);
+           int chipertext11 = payment.Encrypt(eleventhNum,e,n);
+           int chipertext12 = payment.Encrypt(tweltfNum,e,n);
+           int chipertext13 = payment.Encrypt(thirteenthNum,e,n);
+           int chipertext14 = payment.Encrypt(fourteenthNum,e,n);
+           int chipertext15 = payment.Encrypt(fifteenthNum,e,n);
+           int chipertext16 = payment.Encrypt(sixteenthNum,e,n);
+
         }
 
     }
 
 }
+
+
+
+
+
+
+

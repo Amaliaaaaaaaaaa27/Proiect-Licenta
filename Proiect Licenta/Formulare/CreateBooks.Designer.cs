@@ -39,22 +39,23 @@
             btnExit_Create = new Guna.UI2.WinForms.Guna2Button();
             btnInfo_Create = new Button();
             lblUserHii_CreateBooks = new Label();
-            guna2vScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            label3 = new Label();
             label2 = new Label();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            btnClean = new Guna.UI2.WinForms.Guna2Button();
+            folderBrowserDialog1 = new FolderBrowserDialog();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(476, 31);
+            label1.Font = new Font("Century Gothic", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(366, 37);
             label1.Name = "label1";
-            label1.Size = new Size(343, 43);
+            label1.Size = new Size(380, 49);
             label1.TabIndex = 0;
             label1.Text = "Create your books";
             // 
@@ -68,7 +69,7 @@
             btnExit_Create.FillColor = Color.FromArgb(61, 140, 163);
             btnExit_Create.Font = new Font("Segoe UI", 9F);
             btnExit_Create.ForeColor = Color.White;
-            btnExit_Create.Location = new Point(1124, 38);
+            btnExit_Create.Location = new Point(956, 37);
             btnExit_Create.Name = "btnExit_Create";
             btnExit_Create.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnExit_Create.Size = new Size(42, 36);
@@ -80,7 +81,8 @@
             // 
             btnInfo_Create.BackgroundImage = (Image)resources.GetObject("btnInfo_Create.BackgroundImage");
             btnInfo_Create.FlatStyle = FlatStyle.Flat;
-            btnInfo_Create.Location = new Point(27, 73);
+            btnInfo_Create.ForeColor = Color.FromArgb(228, 241, 254);
+            btnInfo_Create.Location = new Point(29, 74);
             btnInfo_Create.Name = "btnInfo_Create";
             btnInfo_Create.Size = new Size(71, 70);
             btnInfo_Create.TabIndex = 4;
@@ -91,48 +93,47 @@
             // 
             lblUserHii_CreateBooks.AutoSize = true;
             lblUserHii_CreateBooks.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblUserHii_CreateBooks.Location = new Point(104, 113);
+            lblUserHii_CreateBooks.Location = new Point(106, 114);
             lblUserHii_CreateBooks.Name = "lblUserHii_CreateBooks";
             lblUserHii_CreateBooks.Size = new Size(282, 30);
             lblUserHii_CreateBooks.TabIndex = 5;
             lblUserHii_CreateBooks.Text = "Hii.., good luck writing!";
             // 
-            // guna2vScrollBar1
-            // 
-            guna2vScrollBar1.AccessibleRole = AccessibleRole.ScrollBar;
-            guna2vScrollBar1.AllowDrop = true;
-            guna2vScrollBar1.AutoScroll = true;
-            guna2vScrollBar1.BorderRadius = 10;
-            guna2vScrollBar1.InUpdate = false;
-            guna2vScrollBar1.LargeChange = 10;
-            guna2vScrollBar1.Location = new Point(877, 252);
-            guna2vScrollBar1.Name = "guna2vScrollBar1";
-            guna2vScrollBar1.ScrollbarSize = 27;
-            guna2vScrollBar1.Size = new Size(27, 666);
-            guna2vScrollBar1.TabIndex = 7;
-            guna2vScrollBar1.Scroll += guna2vScrollBar1_Scroll;
-            // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackgroundImage = (Image)resources.GetObject("flowLayoutPanel1.BackgroundImage");
-            flowLayoutPanel1.Controls.Add(textBox1);
-            flowLayoutPanel1.Location = new Point(119, 252);
+            flowLayoutPanel1.Controls.Add(textBox2);
+            flowLayoutPanel1.Controls.Add(label3);
+            flowLayoutPanel1.Location = new Point(92, 252);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(752, 666);
+            flowLayoutPanel1.Size = new Size(790, 666);
             flowLayoutPanel1.TabIndex = 8;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
-            // textBox1
+            // textBox2
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("SweetHeart", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(3, 3);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(749, 74);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
-            textBox1.KeyDown += textBox1_KeyDown;
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Cursor = Cursors.IBeam;
+            textBox2.Font = new Font("SweetHeart", 35.9999962F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox2.Location = new Point(3, 3);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.RightToLeft = RightToLeft.No;
+            textBox2.Size = new Size(587, 71);
+            textBox2.TabIndex = 11;
+            textBox2.TextChanged += textBox2_TextChanged;
+            textBox2.KeyDown += textBox2_KeyDown;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Location = new Point(596, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(0, 25);
+            label3.TabIndex = 12;
+            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -157,30 +158,32 @@
             guna2Button1.FillColor = Color.FromArgb(105, 145, 110);
             guna2Button1.Font = new Font("manic-depressive", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(1015, 252);
+            guna2Button1.Location = new Point(925, 255);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Button1.Size = new Size(73, 245);
             guna2Button1.TabIndex = 9;
             guna2Button1.Text = "S  a  v  e                                                                          avr";
+            guna2Button1.Click += guna2Button1_Click;
             // 
-            // guna2Button2
+            // btnClean
             // 
-            guna2Button2.BorderRadius = 10;
-            guna2Button2.CustomizableEdges = customizableEdges5;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.FromArgb(105, 145, 110);
-            guna2Button2.Font = new Font("manic-depressive", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(1015, 539);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Button2.Size = new Size(73, 307);
-            guna2Button2.TabIndex = 10;
-            guna2Button2.Text = "C l e a n";
+            btnClean.BorderRadius = 10;
+            btnClean.CustomizableEdges = customizableEdges5;
+            btnClean.DisabledState.BorderColor = Color.DarkGray;
+            btnClean.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnClean.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnClean.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnClean.FillColor = Color.FromArgb(105, 145, 110);
+            btnClean.Font = new Font("manic-depressive", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClean.ForeColor = Color.White;
+            btnClean.Location = new Point(925, 583);
+            btnClean.Name = "btnClean";
+            btnClean.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnClean.Size = new Size(73, 307);
+            btnClean.TabIndex = 10;
+            btnClean.Text = "C l e a n";
+            btnClean.Click += btnClean_Click;
             // 
             // CreateBooks
             // 
@@ -188,12 +191,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(228, 241, 254);
-            ClientSize = new Size(1220, 955);
-            Controls.Add(guna2Button2);
+            ClientSize = new Size(1054, 955);
+            Controls.Add(btnClean);
             Controls.Add(guna2Button1);
             Controls.Add(label2);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(guna2vScrollBar1);
             Controls.Add(lblUserHii_CreateBooks);
             Controls.Add(btnInfo_Create);
             Controls.Add(btnExit_Create);
@@ -216,11 +218,13 @@
         private Button btnInfo_Create;
         private Label lblUserHii_CreateBooks;
         private GroupBox groupBox1;
-        private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar1;
         private FlowLayoutPanel flowLayoutPanel1;
         private TextBox textBox1;
         private Label label2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnClean;
+        private TextBox textBox2;
+        private Label label3;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }

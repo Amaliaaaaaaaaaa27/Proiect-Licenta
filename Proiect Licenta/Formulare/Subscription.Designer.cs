@@ -54,6 +54,7 @@
             label8 = new Label();
             label9 = new Label();
             label11 = new Label();
+            labelName = new Label();
             SuspendLayout();
             // 
             // btnClose_Subscription
@@ -91,6 +92,7 @@
             // 
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.FromArgb(228, 241, 254);
             button1.Location = new Point(35, 18);
             button1.Name = "button1";
             button1.Size = new Size(71, 70);
@@ -139,7 +141,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 10F);
-            label3.Location = new Point(91, 230);
+            label3.Location = new Point(100, 230);
             label3.Name = "label3";
             label3.Size = new Size(59, 23);
             label3.TabIndex = 8;
@@ -218,9 +220,10 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(441, 228);
+            label4.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(441, 230);
             label4.Name = "label4";
-            label4.Size = new Size(83, 25);
+            label4.Size = new Size(94, 23);
             label4.TabIndex = 22;
             label4.Text = "Premium";
             // 
@@ -262,12 +265,21 @@
             label11.TabIndex = 26;
             label11.Text = "20 RON";
             // 
+            // labelName
+            // 
+            labelName.AutoSize = true;
+            labelName.Location = new Point(112, 57);
+            labelName.Name = "labelName";
+            labelName.Size = new Size(0, 25);
+            labelName.TabIndex = 27;
+            // 
             // Subscription
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(228, 241, 254);
             ClientSize = new Size(1155, 628);
+            Controls.Add(labelName);
             Controls.Add(label11);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -313,5 +325,6 @@
         private Label label8;
         private Label label9;
         private Label label11;
+        private Label labelName;
     }
 }

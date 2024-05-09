@@ -1,4 +1,4 @@
-﻿namespace Proiect_Licenta.Formulare
+﻿ namespace Proiect_Licenta.Formulare
 {
     partial class InfoAccount
     {
@@ -36,6 +36,10 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            lblName = new Label();
+            lblGmail = new Label();
+            lblAge = new Label();
+            lblSubs = new Label();
             SuspendLayout();
             // 
             // btn_Exit
@@ -48,7 +52,8 @@
             btn_Exit.FillColor = Color.FromArgb(61, 140, 163);
             btn_Exit.Font = new Font("Segoe UI", 9F);
             btn_Exit.ForeColor = Color.White;
-            btn_Exit.Location = new Point(364, 23);
+            btn_Exit.Location = new Point(407, 24);
+            btn_Exit.Margin = new Padding(4);
             btn_Exit.Name = "btn_Exit";
             btn_Exit.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btn_Exit.Size = new Size(42, 36);
@@ -60,7 +65,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 107);
+            label1.Location = new Point(39, 115);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(394, 43);
             label1.TabIndex = 5;
@@ -70,7 +76,8 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Century Gothic", 12F);
-            label2.Location = new Point(36, 251);
+            label2.Location = new Point(54, 273);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(94, 30);
             label2.TabIndex = 6;
@@ -80,7 +87,8 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 12F);
-            label3.Location = new Point(37, 339);
+            label3.Location = new Point(54, 373);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(93, 30);
             label3.TabIndex = 7;
@@ -90,7 +98,8 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 12F);
-            label4.Location = new Point(37, 422);
+            label4.Location = new Point(59, 484);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(69, 30);
             label4.TabIndex = 8;
@@ -100,25 +109,69 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F);
-            label5.Location = new Point(37, 511);
+            label5.Location = new Point(56, 585);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(223, 30);
             label5.TabIndex = 9;
             label5.Text = "Subscription type:";
             // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Location = new Point(156, 273);
+            lblName.Margin = new Padding(4, 0, 4, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(0, 30);
+            lblName.TabIndex = 10;
+            // 
+            // lblGmail
+            // 
+            lblGmail.AutoSize = true;
+            lblGmail.Location = new Point(155, 373);
+            lblGmail.Margin = new Padding(4, 0, 4, 0);
+            lblGmail.Name = "lblGmail";
+            lblGmail.Size = new Size(0, 30);
+            lblGmail.TabIndex = 11;
+            // 
+            // lblAge
+            // 
+            lblAge.AutoSize = true;
+            lblAge.Location = new Point(136, 484);
+            lblAge.Margin = new Padding(4, 0, 4, 0);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new Size(0, 30);
+            lblAge.TabIndex = 12;
+            // 
+            // lblSubs
+            // 
+            lblSubs.AutoSize = true;
+            lblSubs.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSubs.Location = new Point(59, 639);
+            lblSubs.Margin = new Padding(4, 0, 4, 0);
+            lblSubs.Name = "lblSubs";
+            lblSubs.Size = new Size(0, 30);
+            lblSubs.TabIndex = 13;
+            // 
             // InfoAccount
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(14F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(139, 191, 164);
-            ClientSize = new Size(426, 675);
+            ClientSize = new Size(486, 730);
+            Controls.Add(lblSubs);
+            Controls.Add(lblAge);
+            Controls.Add(lblGmail);
+            Controls.Add(lblName);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btn_Exit);
+            Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4);
             Name = "InfoAccount";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "InfoAccount";
@@ -135,5 +188,9 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label lblName;
+        private Label lblGmail;
+        private Label lblAge;
+        private Label lblSubs;
     }
 }

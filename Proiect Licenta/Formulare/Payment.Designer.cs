@@ -169,7 +169,7 @@
             txtBox_YYYY.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBox_YYYY.Font = new Font("Segoe UI", 9F);
             txtBox_YYYY.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBox_YYYY.Location = new Point(232, 320);
+            txtBox_YYYY.Location = new Point(224, 320);
             txtBox_YYYY.Margin = new Padding(4, 5, 4, 5);
             txtBox_YYYY.Name = "txtBox_YYYY";
             txtBox_YYYY.PasswordChar = '\0';

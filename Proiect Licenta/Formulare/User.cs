@@ -12,16 +12,16 @@ namespace Proiect_Licenta.Formulare
     {
         public int ID { get; }
 
+        // cnp si nr of phone it s string because i dont use this for some math stuf 
         private static int contIDGenerator = 0;
         public string Name { get;  set; }
-        public  int CNP { get;  set; }
+        public  string  CNP { get;  set; }
         public string Gmail { get;  set; }
-        public int Phone { get;  set; }
+        public string  Phone { get;  set; }
         public string Password { get;  set; }
-        public string City { get; set; }
         public string Country { get; set; }
 
-        public string Municipality { get; set; }
+     
 
 
         public User()
@@ -29,15 +29,10 @@ namespace Proiect_Licenta.Formulare
             ID = contIDGenerator++;
            
         }
-
-        // 6020927170081
-        // 0123456789101112
-        public  void ExtractDataFromCnp(string cnp)
+        public int ExtractDataFromCnp(string cnp)
         {
             string bornDate = cnp.Substring(1, 13);
-            int month = int.Parse(bornDate.Substring(3, 4));
-            int day = int.Parse(bornDate.Substring(5,6));
-            int year = int.Parse(bornDate.Substring(2,2));
+            int year = int.Parse(bornDate.Substring(1,2));
 
             if(year >= 0 && year <= 21)
         {
@@ -48,10 +43,11 @@ namespace Proiect_Licenta.Formulare
                 year += 1900;
             }
 
-          DateTime born  = new DateTime(year, month , day);
+            return year;
         }
 
-      
+       
+        
 
     }
 

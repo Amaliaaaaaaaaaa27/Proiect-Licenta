@@ -29,24 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BooksInRomanian));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             btnBooksAction_Rom = new Guna.UI2.WinForms.Guna2Button();
             btnBookSciences_Rom = new Guna.UI2.WinForms.Guna2Button();
-            btnBooksLiterature_Rom = new Guna.UI2.WinForms.Guna2Button();
             btnBooksPhilosophy_Rom = new Guna.UI2.WinForms.Guna2Button();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
+            groupBoxEn = new GroupBox();
             btnInfo_Rom = new Button();
             label2 = new Label();
             btnExitBooksRo = new Guna.UI2.WinForms.Guna2Button();
@@ -77,7 +74,7 @@
             // btnBooksAction_Rom
             // 
             btnBooksAction_Rom.BorderRadius = 10;
-            btnBooksAction_Rom.CustomizableEdges = customizableEdges11;
+            btnBooksAction_Rom.CustomizableEdges = customizableEdges1;
             btnBooksAction_Rom.DisabledState.BorderColor = Color.DarkGray;
             btnBooksAction_Rom.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBooksAction_Rom.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -85,17 +82,18 @@
             btnBooksAction_Rom.FillColor = Color.FromArgb(148, 124, 176);
             btnBooksAction_Rom.Font = new Font("Segoe UI", 9F);
             btnBooksAction_Rom.ForeColor = Color.White;
-            btnBooksAction_Rom.Location = new Point(52, 89);
+            btnBooksAction_Rom.Location = new Point(52, 115);
             btnBooksAction_Rom.Name = "btnBooksAction_Rom";
-            btnBooksAction_Rom.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btnBooksAction_Rom.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnBooksAction_Rom.Size = new Size(322, 77);
             btnBooksAction_Rom.TabIndex = 3;
             btnBooksAction_Rom.Text = "Action";
+            btnBooksAction_Rom.Click += btnBooksAction_Rom_Click;
             // 
             // btnBookSciences_Rom
             // 
             btnBookSciences_Rom.BorderRadius = 10;
-            btnBookSciences_Rom.CustomizableEdges = customizableEdges13;
+            btnBookSciences_Rom.CustomizableEdges = customizableEdges3;
             btnBookSciences_Rom.DisabledState.BorderColor = Color.DarkGray;
             btnBookSciences_Rom.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBookSciences_Rom.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -103,35 +101,18 @@
             btnBookSciences_Rom.FillColor = Color.FromArgb(148, 124, 176);
             btnBookSciences_Rom.Font = new Font("Segoe UI", 9F);
             btnBookSciences_Rom.ForeColor = Color.White;
-            btnBookSciences_Rom.Location = new Point(52, 205);
+            btnBookSciences_Rom.Location = new Point(52, 247);
             btnBookSciences_Rom.Name = "btnBookSciences_Rom";
-            btnBookSciences_Rom.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnBookSciences_Rom.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnBookSciences_Rom.Size = new Size(322, 77);
             btnBookSciences_Rom.TabIndex = 4;
             btnBookSciences_Rom.Text = "Sciences";
-            // 
-            // btnBooksLiterature_Rom
-            // 
-            btnBooksLiterature_Rom.BorderRadius = 10;
-            btnBooksLiterature_Rom.CustomizableEdges = customizableEdges15;
-            btnBooksLiterature_Rom.DisabledState.BorderColor = Color.DarkGray;
-            btnBooksLiterature_Rom.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnBooksLiterature_Rom.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnBooksLiterature_Rom.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnBooksLiterature_Rom.FillColor = Color.FromArgb(148, 124, 176);
-            btnBooksLiterature_Rom.Font = new Font("Segoe UI", 9F);
-            btnBooksLiterature_Rom.ForeColor = Color.White;
-            btnBooksLiterature_Rom.Location = new Point(52, 323);
-            btnBooksLiterature_Rom.Name = "btnBooksLiterature_Rom";
-            btnBooksLiterature_Rom.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            btnBooksLiterature_Rom.Size = new Size(322, 77);
-            btnBooksLiterature_Rom.TabIndex = 5;
-            btnBooksLiterature_Rom.Text = "Classic literature";
+            btnBookSciences_Rom.Click += btnBookSciences_Rom_Click;
             // 
             // btnBooksPhilosophy_Rom
             // 
             btnBooksPhilosophy_Rom.BorderRadius = 10;
-            btnBooksPhilosophy_Rom.CustomizableEdges = customizableEdges17;
+            btnBooksPhilosophy_Rom.CustomizableEdges = customizableEdges5;
             btnBooksPhilosophy_Rom.DisabledState.BorderColor = Color.DarkGray;
             btnBooksPhilosophy_Rom.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBooksPhilosophy_Rom.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -139,9 +120,9 @@
             btnBooksPhilosophy_Rom.FillColor = Color.FromArgb(148, 124, 176);
             btnBooksPhilosophy_Rom.Font = new Font("Segoe UI", 9F);
             btnBooksPhilosophy_Rom.ForeColor = Color.White;
-            btnBooksPhilosophy_Rom.Location = new Point(52, 437);
+            btnBooksPhilosophy_Rom.Location = new Point(52, 378);
             btnBooksPhilosophy_Rom.Name = "btnBooksPhilosophy_Rom";
-            btnBooksPhilosophy_Rom.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnBooksPhilosophy_Rom.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnBooksPhilosophy_Rom.Size = new Size(322, 77);
             btnBooksPhilosophy_Rom.TabIndex = 6;
             btnBooksPhilosophy_Rom.Text = "Philosophy";
@@ -152,29 +133,29 @@
             groupBox1.Controls.Add(btnBooksAction_Rom);
             groupBox1.Controls.Add(btnBooksPhilosophy_Rom);
             groupBox1.Controls.Add(btnBookSciences_Rom);
-            groupBox1.Controls.Add(btnBooksLiterature_Rom);
             groupBox1.Font = new Font("Century Gothic", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(11, 175);
+            groupBox1.Location = new Point(41, 174);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(468, 577);
+            groupBox1.Size = new Size(457, 546);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
             groupBox1.Text = "Types of books";
             // 
-            // groupBox2
+            // groupBoxEn
             // 
-            groupBox2.Font = new Font("Century Gothic", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(476, 175);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(799, 577);
-            groupBox2.TabIndex = 8;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Books";
+            groupBoxEn.Font = new Font("Century Gothic", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBoxEn.Location = new Point(498, 174);
+            groupBoxEn.Name = "groupBoxEn";
+            groupBoxEn.Size = new Size(799, 546);
+            groupBoxEn.TabIndex = 8;
+            groupBoxEn.TabStop = false;
+            groupBoxEn.Text = "Books";
             // 
             // btnInfo_Rom
             // 
             btnInfo_Rom.BackgroundImage = (Image)resources.GetObject("btnInfo_Rom.BackgroundImage");
             btnInfo_Rom.FlatStyle = FlatStyle.Flat;
+            btnInfo_Rom.ForeColor = Color.FromArgb(228, 241, 254);
             btnInfo_Rom.Location = new Point(41, 32);
             btnInfo_Rom.Name = "btnInfo_Rom";
             btnInfo_Rom.Size = new Size(71, 70);
@@ -194,7 +175,7 @@
             // 
             // btnExitBooksRo
             // 
-            btnExitBooksRo.CustomizableEdges = customizableEdges19;
+            btnExitBooksRo.CustomizableEdges = customizableEdges7;
             btnExitBooksRo.DisabledState.BorderColor = Color.DarkGray;
             btnExitBooksRo.DisabledState.CustomBorderColor = Color.DarkGray;
             btnExitBooksRo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -204,10 +185,11 @@
             btnExitBooksRo.ForeColor = Color.White;
             btnExitBooksRo.Location = new Point(1255, 35);
             btnExitBooksRo.Name = "btnExitBooksRo";
-            btnExitBooksRo.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btnExitBooksRo.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnExitBooksRo.Size = new Size(42, 36);
             btnExitBooksRo.TabIndex = 0;
             btnExitBooksRo.Text = "X";
+            btnExitBooksRo.Click += btnExitBooksRo_Click;
             // 
             // BooksInRomanian
             // 
@@ -217,7 +199,7 @@
             ClientSize = new Size(1339, 777);
             Controls.Add(label2);
             Controls.Add(btnInfo_Rom);
-            Controls.Add(groupBox2);
+            Controls.Add(groupBoxEn);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
@@ -237,10 +219,9 @@
         private PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnBooksAction_Rom;
         private Guna.UI2.WinForms.Guna2Button btnBookSciences_Rom;
-        private Guna.UI2.WinForms.Guna2Button btnBooksLiterature_Rom;
         private Guna.UI2.WinForms.Guna2Button btnBooksPhilosophy_Rom;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
+        private GroupBox groupBoxEn;
         private Button btnInfo_Rom;
         private Label label2;
         private Guna.UI2.WinForms.Guna2Button btnExitBooksRo;

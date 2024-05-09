@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Microsoft.VisualBasic.ApplicationServices;
+
+using Proiect_Licenta.Formulare;
 
 namespace Proiect_Licenta.Formulare
 {
@@ -17,8 +21,10 @@ namespace Proiect_Licenta.Formulare
         public CreateAccount()
         {
             InitializeComponent();
+
         }
 
+        // sablon
         private bool VerifyIfTxtBoxIsNullOrNot(string a)
         {
             if (string.IsNullOrEmpty(a))
@@ -43,7 +49,7 @@ namespace Proiect_Licenta.Formulare
             return true;
         }
 
-        public User user { get; set; }
+        User user = new User();
 
 
         public void VerifyTxtBoxNume()
@@ -89,14 +95,9 @@ namespace Proiect_Licenta.Formulare
         }
         public void VerifyTxtBoxPhone()
         {
-            int numberOfPhone;
+            user.Phone = txtBoxPhone_CreateAccount.Text;
 
-            if (int.TryParse(txtBoxPhone_CreateAccount.Text, out numberOfPhone))
-            {
-                user.Phone = numberOfPhone;
-            }
-
-            else if (!VerifyIfTxtBoxIsNullOrNot(txtBoxPhone_CreateAccount.Text))
+            if (!VerifyIfTxtBoxIsNullOrNot(txtBoxPhone_CreateAccount.Text))
             {
                 txtBoxPhone_CreateAccount.Text = "EMPTY FIELD";
             }
@@ -138,7 +139,7 @@ namespace Proiect_Licenta.Formulare
         {
             int length = user.CNP.ToString().Length;
 
-            if (length == 12)
+            if (length == 13)
             {
                 return true;
             }
@@ -166,13 +167,9 @@ namespace Proiect_Licenta.Formulare
 
         private void VerifyCNP()
         {
-            int cnp;
+            user.CNP = txtBoxCNP_CreateAccount.Text;
 
-            if (int.TryParse(txtBoxCNP_CreateAccount.Text, out cnp))
-            {
-                user.CNP = cnp;
-            }
-            else if (!VerifyIfTxtBoxIsNullOrNot(txtBoxCNP_CreateAccount.Text))
+            if (!VerifyIfTxtBoxIsNullOrNot(txtBoxCNP_CreateAccount.Text))
             {
                 txtBoxCNP_CreateAccount.Text = "EMPTY FIELD";
             }
@@ -182,33 +179,37 @@ namespace Proiect_Licenta.Formulare
             }
         }
 
-        private void btn_Next_Click_1(object sender, EventArgs e)
+        private void VerifyCountry()
         {
-            VerifyTxtBoxPassword();
-            VerifyGmail();
-            VerifyTxtBoxPhone();
-            VerifyTxtBoxNume();
-            VerifyCNP();
+            user.Country = txtBoxCountry.Text;
 
+            if (!VerifyIfTxtBoxIsNullOrNot(txtBoxCountry.Text))
+            {
+                txtBoxCountry.Text = "EMPTY FIELD";
+            }
+
+        }
+
+        private bool VerifyCond()
+        {
             if (LimitNumberOfPhone() &&
-                VerifyNumberOfCnp() &&
-                VerifyGmailCharacter() &&
-                LimitPassword() &&
-                VerifyIfTxtBoxIsNullOrNot(user.Name) &&
-                VerifyIfTxtBoxIsNullOrNot(user.Gmail) &&
-                VerifyIfTxtBoxIsNullOrNot(user.Password) &&
-                VerifyIfTxtBoxIsNullOrNot(txtBoxPhone_CreateAccount.Text) &&
-                VerifyIfTxtBoxIsNullOrNot(txtBoxCNP_CreateAccount.Text))
+                 VerifyNumberOfCnp() &&
+                 VerifyGmailCharacter() &&
+                 LimitPassword() &&
+                 VerifyIfTxtBoxIsNullOrNot(user.Name) &&
+                 VerifyIfTxtBoxIsNullOrNot(user.Gmail) &&
+                 VerifyIfTxtBoxIsNullOrNot(user.Password) &&
+                 VerifyIfTxtBoxIsNullOrNot(txtBoxPhone_CreateAccount.Text) &&
+                 VerifyIfTxtBoxIsNullOrNot(txtBoxCNP_CreateAccount.Text) &&
+                 VerifyIfTxtBoxIsNullOrNot(txtBoxCountry.Text));
+
+
 
             {
-                Form Subscription = new Subscription();
-                Subscription.Show();
-            }
-            else
-            {
-                return;
+                return true;
             }
 
+            return false;
 
         }
 
@@ -226,6 +227,59 @@ namespace Proiect_Licenta.Formulare
         {
 
         }
+
+        ManagmentDataBase dataBase = new ManagmentDataBase();
+
+
+        Account account = new Account();
+
+
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            VerifyTxtBoxNume();
+            VerifyGmail();
+            VerifyCNP();
+            VerifyTxtBoxPhone();
+            VerifyTxtBoxPassword();
+            VerifyCountry();
+
+
+            if (VerifyCond())
+            {
+
+                ManagmentDataBase dataBase = new ManagmentDataBase();
+
+                dataBase.SelectTableUser();
+
+                // daca conditia de jos se indeplineste asta inseamna ca nu exista contul si ca o sa l creem
+                if (!dataBase.LoginUser(user.Name, user.Password))
+                {
+                    dataBase.CreateAccountUser(user.Name, user.CNP, user.Gmail, user.Phone, user.Password, user.Country);
+                    MessageBox.Show("Account created successfully");
+                    Form Subscription = new Subscription();
+                    Subscription.Show();
+                    
+
+                }
+                else
+                {   // in caz contrar am afisat ca contul este deja existent 
+                    MessageBox.Show("Your account already exists");
+                    Form Login = new Login();
+                    Login.Show();
+                }
+
+
+            }
+        }
     }
 
 }
+
+
+
+
+
+
+
+
